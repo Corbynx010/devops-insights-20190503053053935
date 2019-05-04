@@ -236,5 +236,5 @@
       assert(resMock.send.lastCall.args[0].city === 'El Paso', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 25.56 °C', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
     });
-  //};
+  };
 }());
