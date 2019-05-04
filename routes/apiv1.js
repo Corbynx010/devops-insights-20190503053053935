@@ -68,4 +68,33 @@ exports.getWeather2 = function(req, res) {
 };
 router.get('/getWeather2', exports.getWeather2);
 
+exports.getWeather3 = function(req, res) {
+	var city = req.query.zip;
+	if( (city === null) || (typeof(city) === 'undefined') ) {
+		return res.status(400).send('city missing');
+	}
+
+	var aurl = OPENWEATHERURL + '&q=' + city + ',nz';
+
+	request({
+		method: 'GET',
+        url: aurl,
+  		json: true
+    }, function(err, resp, body) {
+    	if(err) {
+    		res.status(400).send('Failed to get the data');
+    		//console.error("Failed to send request to openweathermap.org", err);
+    	} else {
+    		if(body.cod === 200) {
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + (Math.round(((body.main.temp - 32) * 0.5556)*100)/100) + ' °C';
+    			var response = {city: body.name, weather: weath};
+    			return res.status(200).send(response);
+    		}
+            return res.status(400).send({msg:'Failed'});
+    	}
+    });
+
+};
+router.get('/getWeather2', exports.getWeather3);
+
 exports.router = router;
