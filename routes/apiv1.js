@@ -15,7 +15,13 @@ exports.getWeather = function(req, res) {
 		return res.status(400).send('zip missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&zip=' + zip + ',us';
+var aurl;
+	if(zip.length === 5){
+	aurl = OPENWEATHERURL + '&zip=' + zip + ',us';
+}	else if(zip.length === 4){
+	aurl = OPENWEATHERURL + '&zip=' + zip + ',nz';
+}
+
 
 	request({
 		method: 'GET',
@@ -30,9 +36,8 @@ exports.getWeather = function(req, res) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
-    		} else {
-                return res.status(400).send({msg:'Failed'});
-            }
+    		} 
+            return res.status(400).send({msg:'Failed'});
     	}
     });
 
@@ -61,9 +66,8 @@ exports.getWeather2 = function(req, res) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' F';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
-    		} else {
-                return res.status(400).send({msg:'Failed'});
-            }
+    		}
+            return res.status(400).send({msg:'Failed'});
     	}
     });
 
