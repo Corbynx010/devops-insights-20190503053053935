@@ -30,7 +30,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             data = $scope.zip4m;
         } 
 
-		if(isNaN(data.charAt(0))) {
+		if(isNaN(data)) {
 			$http({
                 method: "GET",
                 url: '/api/v1/getWeather3?city=' + data
