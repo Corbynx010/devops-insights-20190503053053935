@@ -8,7 +8,8 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
         controllerAs: 'wcontroller'
     });
 }]);
-var map;
+
+
 ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
     function($scope, $http, $routeParams, $timeout, $sce) {
 
@@ -17,10 +18,11 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
     $scope.zip1Weather = "";
     
 	$scope.map = function(){
-    map = new google.maps.Map(document.getElementById('map'), {
+    new google.maps.Map(document.getElementById('map'), {
     	center: {lat: -34.397, lng: 150.644},
     	zoom: 8
     });
+    };
 
     $scope.zip = function(which) {
 
@@ -109,7 +111,5 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 } 
         }
     }
-
-    };
-    
+    };    
 }]);
