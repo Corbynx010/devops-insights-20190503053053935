@@ -1,4 +1,3 @@
-
 var ConsoleModule = angular.module('ConsoleModule', ['ngRoute']);
 
 ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvider', '$httpProvider',
@@ -9,13 +8,19 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
         controllerAs: 'wcontroller'
     });
 }]);
-
+var map;
 ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
     function($scope, $http, $routeParams, $timeout, $sce) {
 
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
     $scope.zip1Weather = "";
+    
+	$scope.map = function(){
+    map = new google.maps.Map(document.getElementById('map'), {
+    	center: {lat: -34.397, lng: 150.644},
+    	zoom: 8
+    });
 
     $scope.zip = function(which) {
 
