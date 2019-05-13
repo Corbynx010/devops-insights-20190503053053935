@@ -45,7 +45,7 @@ function initialize() {
     ];
         
     // Display multiple markers on a map
-    let infoWindow = new google.maps.InfoWindow(), marker, i;
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
     
     // Loop through our array of markers & place each one on the map  
     for( i = 0; i < markers.length; i++ ) {
@@ -58,10 +58,10 @@ function initialize() {
         });
         
         // Allow each marker to have an info window    
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        google.maps.event.addListener(marker, 'click', (function(marker1, i) {
             return function() {
                 infoWindow.setContent(infoWindowContent[i][0]);
-                infoWindow.open(map, marker);
+                infoWindow.open(map, marker1);
             };
         })(marker, i));
 
