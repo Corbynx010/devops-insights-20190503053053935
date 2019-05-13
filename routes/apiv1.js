@@ -57,7 +57,7 @@ exports.getWeather2 = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + (Math.round(((body.main.temp - 32) * 0.5556)*100)/100) + ' °C';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' °C';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		}
@@ -86,7 +86,7 @@ exports.getWeather3 = function(req, res) {
     		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + (Math.round(((body.main.temp - 32) * 0.5556)*100)/100) + ' °C';
+    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' °C';
     			var response = {city: body.name, weather: weath};
     			return res.status(200).send(response);
     		}
