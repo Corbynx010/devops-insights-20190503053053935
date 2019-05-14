@@ -101,6 +101,23 @@
             TILE_SIZE * (0.5 + latLng.lng() / 360),
             TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI)));
       }
+      
+      	request({
+		method: 'GET',
+        url: 'http://api.openweathermap.org/data/2.5/box/city?bbox=165,-47,179,-33,10&appid=6b7b471967dd0851d0010cdecf28f829&units=metric',
+  		json: true
+    }, function(err, resp, body) {
+    	if(err) {
+    		res.status(400).send('Failed to get the data');
+    		//console.error("Failed to send request to openweathermap.org", err);
+    	} else {
+    		if(body.cod === 200) {
+    			for(var i in body){console.log(i);}
+    			return res.status(200).send(response);
+    		}
+            return res.status(400).send({msg:'Failed'});
+    	}
+    });
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKHrfyWxMS1EyQWAkMrOt4V8kIk9CgUwU&callback=initMap">
