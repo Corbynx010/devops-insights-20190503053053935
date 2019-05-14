@@ -32,8 +32,16 @@
         <div float="left">
             <% include includes/mainbody %>
         </div>
-        <div id="map"></div>
+        <div id="map"></div>   
+    </body>
+
     <script>
+         angular.element(document).ready(function() {
+            angular.bootstrap(document, ['ConsoleModule']);
+        });
+    </script>
+    
+     <script>
       function initMap() {
         var chicago = new google.maps.LatLng(41.850, -87.650);
 
@@ -94,13 +102,6 @@
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKHrfyWxMS1EyQWAkMrOt4V8kIk9CgUwU&callback=initMap">
-    </script>
-    </body>
-
-    <script>
-         angular.element(document).ready(function() {
-            angular.bootstrap(document, ['ConsoleModule']);
-        });
     </script>
 
 </html>
