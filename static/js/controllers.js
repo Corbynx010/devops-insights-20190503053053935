@@ -174,3 +174,5 @@ function initialize() {
     });
     
 }
+
+initialize();
