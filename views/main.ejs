@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
+<div "height:450px width:600px">
 <head>
     <title>Showing Pixel and Tile Coordinates</title>
     <meta name="viewport" content="initial-scale=1.0">
@@ -9,6 +10,12 @@
        * element that contains the map. */
       #map {
         height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
       }
     </style>
   </head>
@@ -77,4 +84,5 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKHrfyWxMS1EyQWAkMrOt4V8kIk9CgUwU&callback=initMap">
     </script>
   </body>
+  </div>
 </html>
