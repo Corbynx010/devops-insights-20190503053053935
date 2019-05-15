@@ -88,6 +88,10 @@
     		map: map,
     		title: cities[i+1]
 		  });
+		  
+		  marker.addListener('click', function() {
+          map.setCenter(marker.getPosition());
+        });
 	}
   
       }
