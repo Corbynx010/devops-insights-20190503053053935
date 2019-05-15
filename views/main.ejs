@@ -84,7 +84,7 @@
 	
 	var marker;
 	for(var i = 0; i < cities.length; i++){
-		marker[i] = new google.maps.Marker({
+		marker.push(new google.maps.Marker({
     		position: cities[i*2],
     		map: map,
     		title: cities[(i*2)+1]
@@ -92,7 +92,7 @@
 		  
 		  marker[i].addListener('click', function() {
           map.setCenter(marker[i].getPosition());
-        });
+        }));
 	}
   
       }
