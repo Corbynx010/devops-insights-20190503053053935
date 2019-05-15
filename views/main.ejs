@@ -82,15 +82,16 @@
 	{lat: -37.958549, lng: 176.985443}, 'Whakatane',
 	{lat: -38.653332, lng: 178.004166}, 'Gisborne'];
 	
+	var marker;
 	for(var i = 0; i < cities.length; i += 2){
-		var marker = new google.maps.Marker({
+		marker.push(new google.maps.Marker({
     		position: cities[i],
     		map: map,
     		title: cities[i+1]
-		  });
+		  });)
 		  
-		  marker.addListener('click', function() {
-          map.setCenter(marker.getPosition());
+		  marker[i/2].addListener('click', function() {
+          map.setCenter(marker[i/2].getPosition());
         });
 	}
   
