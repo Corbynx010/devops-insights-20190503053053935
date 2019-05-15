@@ -83,15 +83,15 @@
 	{lat: -38.653332, lng: 178.004166}, 'Gisborne'];
 	
 	var marker;
-	for(var i = 0; i < cities.length; i += 2){
-		marker.push(new google.maps.Marker({
-    		position: cities[i],
+	for(var i = 0; i < cities.length; i++){
+		marker[i] = new google.maps.Marker({
+    		position: cities[i*2],
     		map: map,
-    		title: cities[i+1]
-		  });)
+    		title: cities[(i*2)+1]
+		  });
 		  
-		  marker[i/2].addListener('click', function() {
-          map.setCenter(marker[i/2].getPosition());
+		  marker[i].addListener('click', function() {
+          map.setCenter(marker[i].getPosition());
         });
 	}
   
