@@ -89,11 +89,14 @@
     		map: map,
     		title: cities[(i*2)+1]
 		  });
-		  
-		  marker[i].addListener('click', function() {
-          map.setCenter(cities[i*2]);
-        });
 	}
+	
+		  for (var i in marker){
+		  i.addListener('click', function() {
+          map.setCenter(i);
+        });
+    }
+
   
       }
 
