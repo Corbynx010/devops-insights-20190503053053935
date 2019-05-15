@@ -49,7 +49,7 @@
 
         var map = new google.maps.Map(document.getElementById('map'), {
           center: hamilton,
-          zoom: 5
+          zoom: 4
         });
 
 	var cities = [
@@ -91,7 +91,7 @@
 		  });
 	}
 	
-		  for (var i in marker){
+		  for (google.maps.Marker i in marker){
 		  i.addListener('click', function() {
           map.setCenter(i);
         });
