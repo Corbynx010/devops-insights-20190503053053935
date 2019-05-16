@@ -117,7 +117,7 @@
             }.bind(this))();
 
           var infowindow = new google.maps.InfoWindow({
-          content: contentString
+          content: contentString()
         	});
           
           infowindow.open(map, this);
