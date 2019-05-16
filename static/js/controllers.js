@@ -153,16 +153,12 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
     		title: cities[(i*2)+1]
 		  });
 
-		  marker[i].addListener('click', function() {
-		  	let googleC = google;
-		  	let dollar = $;
-		  	let dolHttp = $http;
-		  	let mapC = map;
-		  	
+		  marker[i].addListener('click', function($, $http, map, google) {
+
           map.setCenter(this.getPosition());
           
-          var contentString = dollar.proxy(function(data) {
-          	dolHttp({
+          var contentString = $.proxy(function() {
+          	$http({
                 method: "GET",
                 url: '/api/v1/getWeather3?zip=' + this.title
             }).then( function(response) {
@@ -170,11 +166,11 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             });
             },this)();
 
-          var infowindow = new googleC.maps.InfoWindow({
+          var infowindow = new google.maps.InfoWindow({
           content: contentString
         	});
           
-          infowindow.open(mapC, this);
+          infowindow.open(map, this);
         });
 	}
     }
