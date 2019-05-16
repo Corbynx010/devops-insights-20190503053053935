@@ -156,13 +156,14 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		  marker[i].addListener('click', function() {
           map.setCenter(this.getPosition());
           
-          var contentString = (_.bind(function(data) {
+          var contentString = ($.proxy(function(data) {
           	$http({
                 method: "GET",
                 url: '/api/v1/getWeather3?zip=' + this.title
             }).then( function(response) {
                     return response.data.city;
-            })))();
+            });
+            },this))();
 
           var infowindow = new google.maps.InfoWindow({
           content: contentString
