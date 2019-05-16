@@ -97,9 +97,10 @@
           var contentString = (function() {
           	// Create a request variable and assign a new XMLHttpRequest object to it.
 			var request = new XMLHttpRequest()
+			var string;
 
 			// Open a new connection, using the GET request on the URL endpoint
-			request.open('GET', '/api/v1/getWeather3?zip=' + this.title, true);
+			request.open('GET', '/api/v1/getWeather3?city=' + this.title, true);
 
 			return request.onload = function () {
   			var data = JSON.parse(this.response);
@@ -113,7 +114,7 @@
 
 			// Send request
 			request.send();
-			            
+			
             }.bind(this))();
 
           var infowindow = new google.maps.InfoWindow({
