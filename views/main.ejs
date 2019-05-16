@@ -89,6 +89,13 @@
     		map: map,
     		title: cities[(i*2)+1]
 		  });
+<<<<<<< HEAD
+=======
+		  
+		  marker[i].addListener('click', function() {
+          map.setCenter(this.getPosition());
+        });
+>>>>>>> 74168fc00ad042f1a597120a07b15f35acc3fa86
 	}
 	
 		  for (google.maps.Marker i in marker){
