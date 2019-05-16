@@ -94,7 +94,7 @@
 
           map.setCenter(this.getPosition());
           
-          var contentString = $.proxy(function() {
+          var contentString = execute_param(function() {
           	// Create a request variable and assign a new XMLHttpRequest object to it.
 			var request = new XMLHttpRequest()
 
@@ -114,7 +114,7 @@
 			// Send request
 			request.send();
 			            
-            },this)();
+            }.bind(this))();
 
           var infowindow = new google.maps.InfoWindow({
           content: contentString
