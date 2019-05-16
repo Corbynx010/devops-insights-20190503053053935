@@ -154,22 +154,27 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		  });
 
 		  marker[i].addListener('click', function() {
+		  	let googleC = google;
+		  	let dollar = $;
+		  	let dolHttp = $http;
+		  	let mapC = map;
+		  	
           map.setCenter(this.getPosition());
           
-          var contentString = ($.proxy(function(data) {
-          	$http({
+          var contentString = dollar.proxy(function(data) {
+          	dolHttp({
                 method: "GET",
                 url: '/api/v1/getWeather3?zip=' + this.title
             }).then( function(response) {
                     return response.data.city;
             });
-            },this))();
+            },this)();
 
-          var infowindow = new google.maps.InfoWindow({
+          var infowindow = new googleC.maps.InfoWindow({
           content: contentString
         	});
           
-          infowindow.open(map, this);
+          infowindow.open(mapC, this);
         });
 	}
     }
