@@ -9,7 +9,7 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
 }]);
 
 
- ConsoleModule.map('wmap', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
+ ConsoleModule.controller('wmap', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
     function($scope, $http, $routeParams, $timeout, $sce) {
     	
     function initMap() {
