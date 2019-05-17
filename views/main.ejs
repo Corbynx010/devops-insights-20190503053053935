@@ -91,8 +91,8 @@
 		  });
 
 		  marker[i].addListener('click', function() {
-		  var infowindow;
-          map.setCenter(this.getPosition());
+		  var position = this.getPosition();
+          map.setCenter(position);
           
           // Create a request variable and assign a new XMLHttpRequest object to it.
           	
@@ -101,15 +101,15 @@
             if (this.readyState == 4 && this.status == 200) {
             	var contentString = JSON.parse(this.responseText);
             	
-          		infowindow = new google.maps.InfoWindow({
+          		var infowindow = new google.maps.InfoWindow({
           		content: contentString.city + ': ' + contentString.weather
         	});
     		}
+          infowindow.open(map, position); 
     	  };
+    	  
     	  xmlhttp.open('GET', '/api/v1/getWeather3?city=' + this.title, true);
-    	  xmlhttp.send();
-    	      	  
-          infowindow.open(map, this);
+    	  xmlhttp.send();        	   	      	  
         });
     }
 
