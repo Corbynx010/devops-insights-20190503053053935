@@ -97,6 +97,7 @@
           // Create a request variable and assign a new XMLHttpRequest object to it.
           	
 		  var xmlhttp = new XMLHttpRequest();
+		  xmlhttp.position = position;
           xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
             	var contentString = JSON.parse(this.responseText);
@@ -104,7 +105,7 @@
           		var infowindow = new google.maps.InfoWindow({
           		content: contentString.city + ': ' + contentString.weather
         	});
-          infowindow.open(map, position); 
+          infowindow.open(map, this.position); 
     		}
     	  };
     	  
