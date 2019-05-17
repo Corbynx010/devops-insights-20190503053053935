@@ -98,16 +98,14 @@
           	
 		  var xmlhttp = new XMLHttpRequest();
 
-          xmlhttp.onreadystatechange = stateChange(position);
-          
-          function stateChange(positionInner) {
+          xmlhttp.onreadystatechange = function(position) {
             if (this.readyState == 4 && this.status == 200) {
             	var contentString = JSON.parse(this.responseText);
             	
           		var infowindow = new google.maps.InfoWindow({
           		content: contentString.city + ': ' + contentString.weather
         	});
-          infowindow.open(map, positionInner); 
+          infowindow.open(map, position); 
     		}
     	  };
     	  
