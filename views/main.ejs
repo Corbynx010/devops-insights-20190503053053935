@@ -101,16 +101,15 @@
           xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
             	contentString = JSON.parse(this.responseText);
+            	
+          		var infowindow = new google.maps.InfoWindow({
+          		content: contentString.city + ': ' + contentString.weather
+        	});
+                infowindow.open(map, this);
     		}
     	  };
     	  xmlhttp.open('GET', '/api/v1/getWeather3?city=' + this.title, true);
     	  xmlhttp.send();
-
-          var infowindow = new google.maps.InfoWindow({
-          content: contentString.city + ': ' + contentString.weather
-        	});
-          
-          infowindow.open(map, this);
         });
     }
 
