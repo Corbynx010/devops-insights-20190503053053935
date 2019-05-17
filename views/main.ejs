@@ -94,31 +94,20 @@
 
           map.setCenter(this.getPosition());
           
-          var contentString = (function() {
-          	// Create a request variable and assign a new XMLHttpRequest object to it.
-			var request = new XMLHttpRequest()
-			var string;
-
-			// Open a new connection, using the GET request on the URL endpoint
-			request.open('GET', 'devops-insights-20190503053053935.mybluemix.net/api/v1/getWeather3?city=' + this.title, true);
-
-			return request.onload = function () {
-  			var data = this.response;
-
-  			if (request.status >= 200 && request.status < 400) {
-    			return response.data.city + ": " + response.data.weather;
-  			} else {
- 			   console.log('error');
-  			}
- 			};		
-
-			// Send request
-			request.send();
-			
-            }.bind(this))();
+          var contentString;
+          // Create a request variable and assign a new XMLHttpRequest object to it.
+          	
+		  var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            	contentString = JSON.parse(this.responseText);
+    		}
+    	  };
+    	  xmlhttp.open('GET', 'devops-insights-20190503053053935.mybluemix.net/api/v1/getWeather3?city=' + this.title, true);
+    	  xmlhttp.send();
 
           var infowindow = new google.maps.InfoWindow({
-          content: contentString()
+          content: contentString
         	});
           
           infowindow.open(map, this);
