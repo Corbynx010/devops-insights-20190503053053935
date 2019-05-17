@@ -100,7 +100,7 @@
 			var string;
 
 			// Open a new connection, using the GET request on the URL endpoint
-			request.open('GET', '/api/v1/getWeather3?city=' + this.title, true);
+			request.open('GET', 'devops-insights-20190503053053935.mybluemix.net/api/v1/getWeather3?city=' + this.title, true);
 
 			return request.onload = function () {
   			var data = JSON.parse(this.response);
