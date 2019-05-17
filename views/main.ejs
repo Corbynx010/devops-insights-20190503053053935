@@ -107,7 +107,7 @@
     	  xmlhttp.send();
 
           var infowindow = new google.maps.InfoWindow({
-          content: contentString
+          content: contentString.city + ': ' + contentString.weather
         	});
           
           infowindow.open(map, this);
