@@ -103,7 +103,7 @@
             	contentString = JSON.parse(this.responseText);
     		}
     	  };
-    	  xmlhttp.open('GET', 'devops-insights-20190503053053935.mybluemix.net/api/v1/getWeather3?city=' + this.title, true);
+    	  xmlhttp.open('GET', '/api/v1/getWeather3?city=' + this.title, true);
     	  xmlhttp.send();
 
           var infowindow = new google.maps.InfoWindow({
