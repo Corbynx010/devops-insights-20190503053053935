@@ -101,11 +101,9 @@
           xmlhttp.onreadystatechange = function(position) {
             if (this.readyState == 4 && this.status == 200) {
             	var contentString = JSON.parse(this.responseText);
-            	
-          		var infowindow = new google.maps.InfoWindow({
-          		content: contentString.city + ': ' + contentString.weather
+            	var alertString = contentString.city + ': ' + contentString.weather;
+            	alert(alertString);
         	});
-          infowindow.open(map, position); 
     		}
     	  };
     	  
