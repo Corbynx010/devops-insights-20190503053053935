@@ -91,18 +91,17 @@
 		  });
 
 		  marker[i].addListener('click', function() {
-
+		  var infowindow;
           map.setCenter(this.getPosition());
           
-          var contentString;
           // Create a request variable and assign a new XMLHttpRequest object to it.
           	
 		  var xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-            	contentString = JSON.parse(this.responseText);
+            	var contentString = JSON.parse(this.responseText);
             	
-          		var infowindow = new google.maps.InfoWindow({
+          		infowindow = new google.maps.InfoWindow({
           		content: contentString.city + ': ' + contentString.weather
         	});
     		}
